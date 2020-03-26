@@ -2,9 +2,10 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import defualtImg from '../images/room-1.jpeg'
+import { memo } from "react";
 
 
-export default function Room({room}) {
+const Room = memo(({room})=> {
     const {name,slug,images,price} = room
 
     return (
@@ -23,7 +24,7 @@ export default function Room({room}) {
             <p className="room-info">{name}</p>
         </article>
     )
-}
+})
 
 Room.PropTypes={
     room:PropTypes.shape({
@@ -31,6 +32,8 @@ Room.PropTypes={
         slug:PropTypes.string.isRequired,
         images:PropTypes.arrayOf(PropTypes.string)
         .isRequired,
-        price:PropTypes.number.isRequired,
+        price:PropTypes.number.isRequired
     })
-}
+};
+
+export default Room;
